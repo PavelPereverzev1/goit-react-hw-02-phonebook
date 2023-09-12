@@ -1,0 +1,27 @@
+import { Container } from './Filter.styled';
+import PropTypes from 'prop-types';
+
+const Filter = ({ handleFilter }) => {
+  return (
+    <Container>
+      <label htmlFor="filter">Find contacts by name</label>
+      <input
+        type="text"
+        id="filter"
+        name="filter"
+        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        onChange={e => {
+          handleFilter(e.target.value);
+        }}
+      />
+    </Container>
+  );
+};
+
+export default Filter;
+
+Filter.propTypes = {
+  handleFilter: PropTypes.func.isRequired,
+};
